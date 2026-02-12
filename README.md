@@ -254,3 +254,13 @@ export default defineConfig([
   },
 ])
 ```
+
+# environment variables
+.env
+.env.local
+.env.*.local
+
+# vite env
+.env.development.local
+.env.production.local
+
