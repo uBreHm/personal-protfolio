@@ -11,7 +11,7 @@ export default function App() {
     <div className="min-h-screen bg-[#0A0A0A] text-gray-100">
       <Header />
 
-      <main className="pt-20">
+      <main className="pt-20 flex flex-col gap-32">
         <Hero />
         <Experiences />
         <Projects />

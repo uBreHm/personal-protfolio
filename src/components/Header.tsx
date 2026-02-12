@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 export function Header() {
     const [open, setOpen] = useState(false)
     const [active, setActive] = useState("#sobre")
     const [scrolled, setScrolled] = useState(false)
 
-    const links = [
+    const links = useMemo (() => [
         { label: "Sobre", href: "#sobre" },
         { label: "Experiência", href: "#experiencia" },
         { label: "Projetos", href: "#projetos" },
         { label: "Skills", href: "#skills" },
         { label: "Contato", href: "#contato" },
-    ]
+    ], [])
 
     // efeito ao rolar a página
     useEffect(() => {
@@ -42,7 +42,7 @@ export function Header() {
         })
 
         return () => observer.disconnect()
-    }, [])
+    }, [links])
 
     const handleScroll = (href: string) => {
         const id = href.replace("#", "")

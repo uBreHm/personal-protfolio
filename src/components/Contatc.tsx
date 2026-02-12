@@ -41,11 +41,10 @@ export function Contact() {
     <section
       id="contato"
       className="
-        min-h-[90vh]
+
         flex items-center
         justify-center
         px-6 md:px-10
-        mb-20
       "
     >
       <div className="w-full max-w-xl">

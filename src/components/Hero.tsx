@@ -27,7 +27,6 @@ export function Hero() {
         flex items-center
         justify-center
         px-6 md:px-10
-        mb-20
       "
     >
       <div
