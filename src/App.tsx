@@ -1,34 +1,25 @@
-import { Contact } from "./components/Contatc"
-import { Experiences } from "./components/Experience"
-import { Footer } from "./components/Footer"
-import { Header } from "./components/Header"
-import { Hero } from "./components/Hero"
-import { Projects } from "./components/Projects"
-import { Skills } from "./components/Skills"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { RootLayout } from "./layouts/RootLayout"
+import { Home } from "./pages/Home"
+import { SobrePage } from "./pages/SobrePage"
+import { ExperienciaPage } from "./pages/ExperienciaPage"
+import { ProjetosPage } from "./pages/ProjetosPage"
+import { SkillsPage } from "./pages/SkillsPage"
+import { ContatoPage } from "./pages/ContatoPage"
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-gray-100">
-      <Header />
-
-      <main 
-        className="pt-20 flex flex-col gap-32"
-        role="main"
-        aria-label="Conteúdo principal do portfólio"
-      >
-        <Hero />
-        <Experiences />
-        <Projects />
-        <Skills />
-        <Contact />
-        
-      </main>
-      <footer 
-        className="text-center text-gray-500 py-6 border-t border-white/10 mt-20"
-        role="contentinfo"
-      >
-        <Footer />
-      </footer>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/sobre" element={<SobrePage />} />
+          <Route path="/experiencia" element={<ExperienciaPage />} />
+          <Route path="/projetos" element={<ProjetosPage />} />
+          <Route path="/skills" element={<SkillsPage />} />
+          <Route path="/contato" element={<ContatoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }

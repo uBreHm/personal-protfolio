@@ -1,16 +1,18 @@
 import { useEffect, useMemo, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 
 export function Header() {
     const [open, setOpen] = useState(false)
-    const [active, setActive] = useState("#sobre")
     const [scrolled, setScrolled] = useState(false)
+    const location = useLocation()
 
     const links = useMemo (() => [
-        { label: "Sobre", href: "#sobre" },
-        { label: "Experiência", href: "#experiencia" },
-        { label: "Projetos", href: "#projetos" },
-        { label: "Skills", href: "#skills" },
-        { label: "Contato", href: "#contato" },
+        { label: "Home", href: "/" },
+        { label: "Sobre", href: "/sobre" },
+        { label: "Experiência", href: "/experiencia" },
+        { label: "Projetos", href: "/projetos" },
+        { label: "Skills", href: "/skills" },
+        { label: "Contato", href: "/contato" },
     ], [])
 
     // efeito ao rolar a página
@@ -23,45 +25,8 @@ export function Header() {
         return () => window.removeEventListener("scroll", onScroll)
     }, [])
 
-    // detectar seção ativa
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActive(`#${entry.target.id}`)
-                    }
-                })
-            },
-            { threshold: 0.3 }
-        )
-
-        links.forEach((l) => {
-            const el = document.querySelector(l.href)
-            if (el) observer.observe(el)
-        })
-
-        return () => observer.disconnect()
-    }, [links])
-
-    const handleScroll = (href: string) => {
-        const id = href.replace("#", "")
-        const element = document.getElementById(id)
-
-        if (!element) return
-
-        setActive(href)
-
-        const headerOffset = 80
-        const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-        })
-
-        setOpen(false)
+    const isActive = (href: string) => {
+        return location.pathname === href
     }
 
 
@@ -89,22 +54,22 @@ export function Header() {
                 {/* DESKTOP */}
                 <nav className="hidden md:flex gap-8">
                     {links.map((l) => (
-                        <button
+                        <Link
                             key={l.href}
-                            onClick={() => handleScroll(l.href)}
+                            to={l.href}
                             className={`
                                     relative transition-all duration-200
-                                    ${active === l.href
+                                    ${isActive(l.href)
                                     ? "text-cyan-400"
                                     : "text-gray-400 hover:text-white"}
                                 `}
                         >
                             {l.label}
 
-                            {active === l.href && (
+                            {isActive(l.href) && (
                                 <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-400 animate-fadeIn" />
                             )}
-                        </button>
+                        </Link>
 
                     ))}
                 </nav>
@@ -133,19 +98,20 @@ export function Header() {
             >
                 <div className="p-4 bg-gray-900/90 backdrop-blur flex flex-col gap-4 border-b border-white/10">
                     {links.map((l) => (
-                        <button
+                        <Link
                             key={l.href}
-                            onClick={() => handleScroll(l.href)}
+                            to={l.href}
+                            onClick={() => setOpen(false)}
                             className={`
                                     py-2 transition text-left rounded px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400
-                                    ${active === l.href
+                                    ${isActive(l.href)
                                     ? "text-cyan-400"
                                     : "text-gray-400 hover:text-white"}
                                 `}
-                            aria-current={active === l.href ? "page" : undefined}
+                            aria-current={isActive(l.href) ? "page" : undefined}
                         >
                             {l.label}
-                        </button>
+                        </Link>
 
                     ))}
                 </div>
