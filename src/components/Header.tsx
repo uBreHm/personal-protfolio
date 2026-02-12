@@ -33,7 +33,7 @@ export function Header() {
                     }
                 })
             },
-            { threshold: 0.6 }
+            { threshold: 0.3 }
         )
 
         links.forEach((l) => {
@@ -49,6 +49,8 @@ export function Header() {
         const element = document.getElementById(id)
 
         if (!element) return
+
+        setActive(href)
 
         const headerOffset = 80
         const elementPosition = element.getBoundingClientRect().top
@@ -73,7 +75,7 @@ export function Header() {
                 }
       `}
         >
-            <div className="w-full pl-32 pr-12 md:pl-40 md:pr-20 h-16 flex items-center justify-between">
+            <div className="w-full pl-7 pr-12 md:pl-40 md:pr-20 h-16 flex items-center justify-between">
 
 
                 {/* LOGO */}
@@ -89,11 +91,11 @@ export function Header() {
                             key={l.href}
                             onClick={() => handleScroll(l.href)}
                             className={`
-    relative transition-all duration-200
-    ${active === l.href
+                                    relative transition-all duration-200
+                                    ${active === l.href
                                     ? "text-cyan-400"
                                     : "text-gray-400 hover:text-white"}
-  `}
+                                `}
                         >
                             {l.label}
 
@@ -127,11 +129,11 @@ export function Header() {
                             key={l.href}
                             onClick={() => handleScroll(l.href)}
                             className={`
-    py-2 transition text-left
-    ${active === l.href
+                                    py-2 transition text-left
+                                    ${active === l.href
                                     ? "text-cyan-400"
                                     : "text-gray-400"}
-  `}
+                                `}
                         >
                             {l.label}
                         </button>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { profile } from "../data/profile"
 
-export function Experiences() {
+export function Projects() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -11,12 +11,11 @@ export function Experiences() {
 
     return () => cancelAnimationFrame(id)
   }, [])
-
   return (
     <section
-      id="experiencia"
+      id="projetos"
       className="
-        min-h-[90vh]
+        min-h-[9vh]
         flex items-center
         justify-center
         px-6 md:px-10
@@ -30,13 +29,12 @@ export function Experiences() {
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
         `}
       >
-        {/* TÍTULO */}
         <h2 className="text-3xl md:text-4xl font-bold mb-10">
-          Experiências
+          Projetos
         </h2>
 
         <div className="space-y-10">
-          {profile.experiences.map((exp, index) => (
+          {profile.projects.map((project, index) => (
             <div
               key={index}
               className="
@@ -44,35 +42,53 @@ export function Experiences() {
                 relative
               "
             >
-              {/* BOLINHA DA TIMELINE */}
               <div className="
                 absolute -left-[9px] top-1
                 w-4 h-4 bg-cyan-500 rounded-full
               " />
 
               <h3 className="text-xl font-semibold text-white">
-                {exp.title}
+                {project.title}
               </h3>
 
-              <p className="text-cyan-400 text-sm mb-1">
-                {exp.company}
+              <p className="text-gray-400 mb-3">
+                {project.desc}
               </p>
 
-              <span className="text-gray-500 text-sm block mb-3">
-                {exp.period}
-              </span>
-
-              <ul className="space-y-2">
-                {exp.items.map((item, i) => (
-                  <li
+              <div className="flex flex-wrap gap-2">
+                {project.stack.map((tech, i) => (
+                  <span
                     key={i}
-                    className="text-gray-400 flex gap-2"
+                    className="
+                      text-xs
+                      border border-cyan-500/40
+                      text-cyan-400
+                      px-2 py-1
+                      rounded
+                    "
                   >
-                    <span className="text-cyan-500">▹</span>
-                    {item}
-                  </li>
+                    {tech}
+                  </span>
                 ))}
-              </ul>
+              </div>
+
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-block
+                    mt-3
+                    text-sm
+                    text-cyan-400
+                    hover:text-cyan-300
+                    transition
+                  "
+                >
+                  → Ver projeto
+                </a>
+              )}
             </div>
           ))}
         </div>

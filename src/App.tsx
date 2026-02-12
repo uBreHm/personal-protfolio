@@ -1,5 +1,10 @@
+import { Contact } from "./components/Contatc"
+import { Experiences } from "./components/Experience"
+import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { Hero } from "./components/Hero"
+import { Projects } from "./components/Projects"
+import { Skills } from "./components/Skills"
 
 export default function App() {
   return (
@@ -8,23 +13,15 @@ export default function App() {
 
       <main className="pt-20">
         <Hero />
-
-        <section id="experiencia" className="h-screen flex items-center justify-center">
-          <h1 className="text-4xl">Experiência</h1>
-        </section>
-
-        <section id="projetos" className="h-screen flex items-center justify-center">
-          <h1 className="text-4xl">Projetos</h1>
-        </section>
-
-        <section id="skills" className="h-screen flex items-center justify-center">
-          <h1 className="text-4xl">Skills</h1>
-        </section>
-
-        <section id="contato" className="h-screen flex items-center justify-center">
-          <h1 className="text-4xl">Contato</h1>
-        </section>
+        <Experiences />
+        <Projects />
+        <Skills />
+        <Contact />
+        
       </main>
+      <footer className="text-center text-gray-500 py-6">
+        <Footer />
+      </footer>
     </div>
   )
 }

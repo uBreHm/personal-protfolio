@@ -20,7 +20,8 @@ export const profile = {
     "D3",
     "n8n",
     "Git",
-    "Scrum"
+    "Scrum",
+    "Java Script",
   ],
 
   experiences: [
@@ -58,7 +59,8 @@ export const profile = {
     {
       title: "Sistema de Reservas",
       desc: "Backend em .NET com PostgreSQL para gestão de reservas de hotel.",
-      stack: [".NET", "PostgreSQL", "React"]
+      stack: [".NET", "PostgreSQL", "React"],
+      link: "https://github.com/Hotel-Marazul"
     }
   ]
 }
