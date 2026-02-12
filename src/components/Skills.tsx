@@ -22,6 +22,7 @@ export function Skills() {
         justify-center
         px-6 md:px-10
       "
+      aria-label="Seção de habilidades técnicas"
     >
       <div
         className={`

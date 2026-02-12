@@ -74,6 +74,8 @@ export function Header() {
                     : "bg-transparent"
                 }
       `}
+            role="banner"
+            aria-label="Navegação do portfólio"
         >
             <div className="w-full pl-7 pr-12 md:pl-40 md:pr-20 h-16 flex items-center justify-between">
 
@@ -109,8 +111,11 @@ export function Header() {
 
                 {/* BOTÃO MOBILE */}
                 <button
-                    className="md:hidden text-2xl hover:text-cyan-400 transition"
+                    className="md:hidden text-2xl hover:text-cyan-400 transition p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                     onClick={() => setOpen(!open)}
+                    aria-label={open ? "Fechar menu" : "Abrir menu"}
+                    aria-expanded={open}
+                    aria-controls="mobile-menu"
                 >
                     {open ? "✕" : "☰"}
                 </button>
@@ -118,10 +123,13 @@ export function Header() {
 
             {/* MENU MOBILE */}
             <div
+                id="mobile-menu"
                 className={`
           md:hidden overflow-hidden transition-all duration-300
           ${open ? "max-h-72" : "max-h-0"}
         `}
+                role="navigation"
+                aria-label="Menu móvel"
             >
                 <div className="p-4 bg-gray-900/90 backdrop-blur flex flex-col gap-4 border-b border-white/10">
                     {links.map((l) => (
@@ -129,11 +137,12 @@ export function Header() {
                             key={l.href}
                             onClick={() => handleScroll(l.href)}
                             className={`
-                                    py-2 transition text-left
+                                    py-2 transition text-left rounded px-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400
                                     ${active === l.href
                                     ? "text-cyan-400"
-                                    : "text-gray-400"}
+                                    : "text-gray-400 hover:text-white"}
                                 `}
+                            aria-current={active === l.href ? "page" : undefined}
                         >
                             {l.label}
                         </button>

@@ -20,6 +20,7 @@ export function Projects() {
         justify-center
         px-6 md:px-10
       "
+      aria-label="Seção de projetos"
     >
       <div
         className={`

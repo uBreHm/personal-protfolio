@@ -11,7 +11,11 @@ export default function App() {
     <div className="min-h-screen bg-[#0A0A0A] text-gray-100">
       <Header />
 
-      <main className="pt-20 flex flex-col gap-32">
+      <main 
+        className="pt-20 flex flex-col gap-32"
+        role="main"
+        aria-label="Conteúdo principal do portfólio"
+      >
         <Hero />
         <Experiences />
         <Projects />
@@ -19,7 +23,10 @@ export default function App() {
         <Contact />
         
       </main>
-      <footer className="text-center text-gray-500 py-6">
+      <footer 
+        className="text-center text-gray-500 py-6 border-t border-white/10 mt-20"
+        role="contentinfo"
+      >
         <Footer />
       </footer>
     </div>

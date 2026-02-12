@@ -46,6 +46,7 @@ export function Contact() {
         justify-center
         px-6 md:px-10
       "
+      aria-label="Seção de contato"
     >
       <div className="w-full max-w-xl">
 
@@ -60,53 +61,62 @@ export function Contact() {
         <form
           onSubmit={handleSubmit}
           className="space-y-4"
+          noValidate
         >
 
-          <input
-            name="name"
-            placeholder="Seu nome"
-            required
-            className="
-              w-full px-4 py-3
-              bg-gray-900
-              border border-gray-800
-              rounded-lg
-              outline-none
-              focus:border-cyan-500
-            "
-          />
+          <div className="flex flex-col">
+            <label htmlFor="name" className="text-sm text-gray-400 mb-2 font-medium">
+              Nome <span aria-label="obrigatório">*</span>
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Seu nome"
+              required
+              aria-required="true"
+              className="
+                w-full px-4 py-3
+                bg-gray-900
+                border border-gray-800
+                rounded-lg
+                outline-none
+                focus:border-cyan-500
+                focus-visible:ring-2
+                focus-visible:ring-cyan-500/50
+                transition-all
+              "
+            />
+          </div>
 
-          <input
-            name="email"
-            type="email"
-            placeholder="Seu email"
-            required
-            className="
-              w-full px-4 py-3
-              bg-gray-900
-              border border-gray-800
-              rounded-lg
-              outline-none
-              focus:border-cyan-500
-            "
-          />
-
-          <textarea
-            name="message"
-            placeholder="Sua mensagem"
-            required
-            rows={5}
-            className="
-              w-full px-4 py-3
-              bg-gray-900
-              border border-gray-800
-              rounded-lg
-              outline-none
-              focus:border-cyan-500
-            "
-          />
+          <div className="flex flex-col">
+            <label htmlFor="message" className="text-sm text-gray-400 mb-2 font-medium">
+              Mensagem <span aria-label="obrigatório">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Sua mensagem"
+              required
+              aria-required="true"
+              rows={5}
+              className="
+                w-full px-4 py-3
+                bg-gray-900
+                border border-gray-800
+                rounded-lg
+                outline-none
+                focus:border-cyan-500
+                focus-visible:ring-2
+                focus-visible:ring-cyan-500/50
+                transition-all
+                resize-none
+              "
+            />
+          </div>
 
           <button
+            type="submit"
             disabled={loading}
             className="
               w-full py-3
@@ -115,9 +125,13 @@ export function Contact() {
               font-semibold
               rounded-lg
               hover:bg-cyan-400
-              transition
+              transition-all
               disabled:opacity-50
+              disabled:cursor-not-allowed
+              focus-visible:ring-2
+              focus-visible:ring-cyan-400
             "
+            aria-busy={loading}
           >
             {loading ? "Enviando..." : "Enviar mensagem"}
           </button>

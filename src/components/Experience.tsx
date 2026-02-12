@@ -21,6 +21,7 @@ export function Experiences() {
         justify-center
         px-6 md:px-10
       "
+      aria-label="Seção de experiências profissionais"
     >
       <div
         className={`

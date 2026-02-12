@@ -28,6 +28,7 @@ export function Hero() {
         justify-center
         px-6 md:px-10
       "
+      aria-label="Seção sobre mim - Hero"
     >
       <div
         className={`
