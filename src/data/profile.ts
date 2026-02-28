@@ -28,7 +28,7 @@ export const profile = {
     {
       title: "Desenvolvedor Full Stack / Product Owner",
       company: "UnescLabs – Projeto Ema Sistemas",
-      period: "2025 – Atual",
+      period: "2025 – 2026",
       items: [
         "Desenvolvimento mobile com React Native e TypeScript",
         "Integração e consumo de APIs",

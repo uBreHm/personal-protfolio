@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { profile } from "../data/profile"
+import { profile } from "../../../data/profile"
 
-export function ProjetosPage() {
+export function ExperienciaPage() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function ProjetosPage() {
         justify-center
         px-6 md:px-10 py-20
       "
-      aria-label="Seção de projetos"
+      aria-label="Seção de experiências profissionais"
     >
       <div
         className={`
@@ -28,12 +28,13 @@ export function ProjetosPage() {
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
         `}
       >
+        {/* TÍTULO */}
         <h1 className="text-4xl md:text-5xl font-bold mb-10">
-          Projetos
+          Experiências
         </h1>
 
         <div className="space-y-10">
-          {profile.projects.map((project, index) => (
+          {profile.experiences.map((exp, index) => (
             <div
               key={index}
               className="
@@ -41,53 +42,35 @@ export function ProjetosPage() {
                 relative
               "
             >
+              {/* BOLINHA DA TIMELINE */}
               <div className="
                 absolute -left-[9px] top-1
                 w-4 h-4 bg-cyan-500 rounded-full
               " />
 
               <h3 className="text-xl font-semibold text-white">
-                {project.title}
+                {exp.title}
               </h3>
 
-              <p className="text-gray-400 mb-3">
-                {project.desc}
+              <p className="text-cyan-400 text-sm mb-1">
+                {exp.company}
               </p>
 
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="
-                      text-xs
-                      border border-cyan-500/40
-                      text-cyan-400
-                      px-2 py-1
-                      rounded
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <span className="text-gray-500 text-sm block mb-3">
+                {exp.period}
+              </span>
 
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    inline-block
-                    mt-3
-                    text-sm
-                    text-cyan-400
-                    hover:text-cyan-300
-                    transition
-                  "
-                >
-                  → Ver projeto
-                </a>
-              )}
+              <ul className="space-y-2">
+                {exp.items.map((item, i) => (
+                  <li
+                    key={i}
+                    className="text-gray-400 flex gap-2"
+                  >
+                    <span className="text-cyan-500">▹</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

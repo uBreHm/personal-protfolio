@@ -17,9 +17,9 @@ export function Avatar({
     const [error, setError] = useState(false)
 
     const sizes = {
-        sm: "w-20 h-20",
-        md: "w-32 h-32",
-        lg: "w-44 h-44",
+        sm: { className: "w-20 h-20", px: 80 },
+        md: { className: "w-32 h-32", px: 128 },
+        lg: { className: "w-44 h-44", px: 176 },
     }
 
     const initials = name
@@ -45,8 +45,12 @@ export function Avatar({
                         src={src}
                         alt={alt}
                         onError={() => setError(true)}
+                        width={sizes[size].px}
+                        height={sizes[size].px}
+                        loading="lazy"
+                        decoding="async"
                         className={`
-            ${sizes[size]}
+            ${sizes[size].className}
             rounded-full
             object-cover
             block
@@ -55,7 +59,7 @@ export function Avatar({
                 ) : (
                     <div
                         className={`
-            ${sizes[size]}
+            ${sizes[size].className}
             rounded-full
             bg-gray-900
             flex items-center justify-center

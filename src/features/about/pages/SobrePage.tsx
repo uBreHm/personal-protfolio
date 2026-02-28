@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { profile } from "../data/profile"
-import { Avatar } from "../components/Avatar"
-import avatarImg from "../assets/avatar.jpg"
-import { scrollToSection } from "../utils/scroll"
+import { profile } from "../../../data/profile"
+import { Avatar } from "../../../components/Avatar"
+import avatarImg from "../../../assets/avatar.jpg"
+import { Link } from "react-router-dom"
 
 export function SobrePage() {
   const [visible, setVisible] = useState(false)
@@ -95,8 +95,8 @@ export function SobrePage() {
               justify-center md:justify-start
               mb-10
             ">
-              <button
-                onClick={() => scrollToSection("experiencia")}
+              <Link
+                to="/experiencia"
                 className="
                   px-6 py-3
                   bg-cyan-500
@@ -108,9 +108,9 @@ export function SobrePage() {
                 "
               >
                 Ver Experiências
-              </button>
-              <button
-                onClick={() => scrollToSection("contato")}
+              </Link>
+              <Link
+                to="/contato"
                 className="
                   px-6 py-3
                   border border-cyan-500
@@ -122,7 +122,7 @@ export function SobrePage() {
                 "
               >
                 Entrar em Contato
-              </button>
+              </Link>
             </div>
           </div>
         </div>
