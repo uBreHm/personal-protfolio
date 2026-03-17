@@ -21,7 +21,7 @@ export function Hero() {
 
   return (
     <section
-      id="sobre"
+      id="inicio"
       className="
         min-h-[90vh]
         flex items-center
